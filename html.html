@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To Do List</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="container">
+    <h1><i class="fa-solid fa-list-check" id="main-icon"></i> To Do List </h1>
+
+    <div class="input-area">
+      <input type="text" id="taskInput" placeholder="What do you want to do?">
+      
+      <button class="date-btn" onclick="document.getElementById('dateInput').showPicker()">
+        <i class="fa-solid fa-calendar-days"></i>
+      </button>
+      
+      <input type="date" id="dateInput" style="display: none;">
+      
+      <button onclick="addTask()">Add</button>
+    </div>
+
+    <div class="tabs">
+      <button onclick="filterTasks('all')">All</button>
+      <button onclick="filterTasks('pending')" class="active">Pending</button>
+      <button onclick="filterTasks('completed')">Completed</button>
+    </div>
+
+    <ul id="taskList"></ul>
+  </div>
+
+<script src="script.js"></script>
+</body>
+</html>
