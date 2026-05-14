@@ -56,6 +56,7 @@ function sortTasks(taskArray) {
       if (!b.date) return -1;
       return new Date(a.date) - new Date(b.date);
     }
+    return 0 ;
   });
 }
 
@@ -69,11 +70,13 @@ function renderTasks(filter = 'all') {
     return true;
   });
 
-  if (filteredTasks.length === 0) return;
+  if (filteredTasks.length === 0) {
+    list.innerHTML = "<p style='text-align:center;color:gray'>No tasks yet </p>";
+    return;
+}
 
   filteredTasks = sortTasks(filteredTasks);
 
-  //  grouping
   let grouped = {};
 
   filteredTasks.forEach(task => {
@@ -95,7 +98,6 @@ function renderTasks(filter = 'all') {
       tomorrowDate.setDate(new Date().getDate() + 1);
       let tomorrow = tomorrowDate.toISOString().split("T")[0];
 
-      //  التاريخ بالشكل الكامل
       const formattedDate = new Date(date).toLocaleDateString('en-US', {
         day: 'numeric',
         month: 'short',
@@ -117,13 +119,11 @@ function renderTasks(filter = 'all') {
       titleText = "No Date";
     }
 
-    //  عنوان اليوم
     const title = document.createElement('div');
     title.className = "day-title";
     title.innerText = titleText;
     list.appendChild(title);
 
-    // التاسكات
     grouped[date].forEach(task => {
       const realIndex = tasks.indexOf(task);
 
@@ -145,7 +145,6 @@ function renderTasks(filter = 'all') {
   });
 }
 
-// Drag & Drop
 function dragStart(e, index) {
   e.dataTransfer.setData('text/plain', index);
 }
@@ -166,7 +165,6 @@ function drop(e, targetIndex) {
   renderTasks(currentFilter);
 };
 
-// Initialize
 window.onload = () => {
   filterTasks('all');
 };
