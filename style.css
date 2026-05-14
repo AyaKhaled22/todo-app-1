@@ -35,7 +35,6 @@ h1 {
   font-size: 28px;
 }
 
-/* ===================== Input Area ===================== */
 .input-area {
   padding: 24px 22px;
   display: flex;
@@ -57,7 +56,6 @@ h1 {
   border-color: #b5bec0;
 }
 
-/* Date Button */
 .date-btn {
   width: 54px;
   height: 54px;
@@ -93,7 +91,6 @@ button:hover {
   background: #6fc4fd;
 }
 
-/* ===================== Tabs ===================== */
 .tabs {
   display: flex;
   background: white;
@@ -126,7 +123,6 @@ button:hover {
   background: #19abe6
 }
 
-/* ===================== Task List ===================== */
 #taskList {
   list-style: none;
   padding: 16px 20px 40px;
@@ -178,5 +174,5 @@ button:hover {
 }
 
 .delete-btn:hover {
-  transform: scale(1.0);
+  transform: scale(1.2);
 }
