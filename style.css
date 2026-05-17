@@ -140,7 +140,6 @@ button:hover {
   background: #f0f5f7;
   border-radius: 14px;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
-  cursor: grab;
 }
 
 .task-item:hover {
