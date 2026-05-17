@@ -129,11 +129,7 @@ function renderTasks(filter = 'all') {
 
       const li = document.createElement('li');
       li.className = `task-item ${task.completed ? 'completed' : ''}`;
-      li.draggable = true;
-      li.ondragstart = (e) => dragStart(e, realIndex);
-      li.ondragover = dragOver;
-      li.ondrop = (e) => drop(e, realIndex);
-
+      
       li.innerHTML = `
         <input type="checkbox" ${task.completed ? 'checked' : ''} onchange="toggleComplete(${realIndex})">
         <span class="task-text">${task.text}</span>
@@ -144,26 +140,6 @@ function renderTasks(filter = 'all') {
 
   });
 }
-
-function dragStart(e, index) {
-  e.dataTransfer.setData('text/plain', index);
-}
-
-function dragOver(e) {
-  e.preventDefault();
-}
-
-function drop(e, targetIndex) {
-  e.preventDefault();
-  const sourceIndex = parseInt(e.dataTransfer.getData('text/plain'));
-  if (sourceIndex === targetIndex) return;
-
-  const [movedTask] = tasks.splice(sourceIndex, 1);
-  tasks.splice(targetIndex, 0, movedTask);
-
-  saveTasks();
-  renderTasks(currentFilter);
-};
 
 window.onload = () => {
   filterTasks('all');
